@@ -1,0 +1,448 @@
+ Set_a_size:       1000000
+	 Set_b_size:       1000000
+	 Pub_mod_bitsize:  210
+	 Bucket_max_load:  120
+	 Table_length:     13000
+
+----------------------------------------------------------------
+
+Outsource Time :119.271
+
+----------------
+
+Time to compute comp_request:1.83801e-06
+
+----------------
+
+Time to  Grant computation:187.413
+
+----------------
+
+Time to run Serv.comput():145.594
+
+----------------
+
+Time to find intersection:5698.45
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=
+ Set_a_size:       1000000
+	 Set_b_size:       1000000
+	 Pub_mod_bitsize:  300
+	 Bucket_max_load:  120
+	 Table_length:     13000
+
+----------------------------------------------------------------
+
+Outsource Time :130.719
+
+----------------
+
+Time to compute comp_request:4.521e-06
+
+----------------
+
+Time to  Grant computation:212.497
+
+----------------
+
+Time to run Serv.comput():172.063
+
+----------------
+
+Time to find intersection:9246.55
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Set_a_size:       1000000
+	 Set_b_size:       1000000
+	 Pub_mod_bitsize:  210
+	 Bucket_max_load:  10
+	 Table_length:     500000
+
+----------------------------------------------------------------
+
+====== Overflow, Value 34160995932637196115761143053051658240, was not inserted into HT
+
+====== Overflow, Value 29425699983948392537523052858843695912, was not inserted into HT
+
+====== Overflow, Value 32291113257024553805121268262005761701, was not inserted into HT
+
+====== Overflow, Value 15532045936544432028691235461291564091, was not inserted into HT
+
+========== Overflow ========
+
+Outsource Time :1536.01
+
+====== Overflow, Value 29435687065463446207945338222407915761, was not inserted into HT
+
+====== Overflow, Value 8833472020169811311432545668233577168, was not inserted into HT
+
+====== Overflow, Value 36334300945476065406691682153065000650, was not inserted into HT
+
+========== Overflow ========
+
+----------------
+
+Time to compute comp_request:3.16999e-07
+
+----------------
+
+Time to  Grant computation:2350
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+	 Set_a_size:       1000000
+	 Set_b_size:       1000000
+	 Pub_mod_bitsize:  210
+	 Bucket_max_load:  110
+	 Table_length:     14000
+
+----------------------------------------------------------------
+
+Outsource Time :113.11
+
+----------------
+
+Time to compute comp_request:1.825e-06
+
+----------------
+
+Time to  Grant computation:178.423
+
+----------------
+
+Time to run Serv.comput():133.715
+
+----------------
+
+Time to find intersection:5579.05
+
+----------------
+
+Total Computation Time Excluding outsource Time:5891.19.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ Set_a_size:       1000000
+	 Set_b_size:       1000000
+	 Pub_mod_bitsize:  200
+	 Bucket_max_load:  90
+	 Table_length:     20000
+
+----------------------------------------------------------------
+
+Outsource Time :135.912
+
+----------------
+
+Time to compute comp_request:1.56101e-06
+
+----------------
+
+Time to  Grant computation:206.019
+
+----------------
+
+Time to run Serv.comput():143.215
+
+----------------
+
+Time to find intersection:4741.38
+
+----------------
+
+Total Computation Time Excluding outsource Time:5090.61
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	 Set_a_size:       1000000
+	 Set_b_size:       1000000
+	 Pub_mod_bitsize:  210
+	 Bucket_max_load:  40
+	 Table_length:     70000
+
+----------------------------------------------------------------
+
+Outsource Time :305.206
+
+----------------
+
+Time to compute comp_request:4.50993e-07
+
+----------------
+
+Time to  Grant computation:404.986
+
+----------------
+
+Time to run Serv.comput():182.276
+
+----------------
+
+Time to find intersection:4060.8
+
+----------------
+
+Total Computation Time Excluding outsource Time:4648.06
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ Set_a_size:       1000000
+	 Set_b_size:       1000000
+	 Pub_mod_bitsize:  210
+	 Bucket_max_load:  30
+	 Table_length:     100000
+
+----------------------------------------------------------------
+
+Outsource Time :405.367
+
+----------------
+
+Time to compute comp_request:3.83006e-07
+
+----------------
+
+Time to  Grant computation:526.734
+
+----------------
+
+Time to run Serv.comput():209.875
+
+----------------
+
+Time to find intersection:4259.98
+
+----------------
+
+Total Computation Time Excluding outsource Time:4996.59
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+Set_a_size:       1000000
+	 Set_b_size:       1000000
+	 Pub_mod_bitsize:  210
+	 Bucket_max_load:  20
+	 Table_length:     120000
+
+
+Outsource Time :461.887
+
+                                  We had over 50 overflowwwwwwwwwwwwwwwwwwwww
+ 
+Time to compute comp_request:3.53e-07
+
+----------------
+
+Time to  Grant computation:593.033
+
+----------------
+
+Time to run Serv.comput():210.854
+
+----------------
+
+Time to find intersection:3145.04
+
+----------------
+
+Total Computation Time Excluding outsource Time:3948.93
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+ Set_a_size:       1000000
+	 Set_b_size:       1000000
+	 Pub_mod_bitsize:  210
+	 Bucket_max_load:  10
+	 Table_length:     400000
+
+----------------------------------------------------------------
+
+===== OVERFLLOW; Value:22187883749887818179566124174163316962, was not inserted into HT
+
+===== OVERFLLOW; Value:5606767335809082719340417158360236484, was not inserted into HT
+
+===== OVERFLLOW; Value:24743351117246689479866618854432842586, was not inserted into HT
+
+===== OVERFLLOW; Value:23421622693848976113781095172944802206, was not inserted into HT
+
+===== OVERFLLOW; Value:15518504319884491165091087379216678263, was not inserted into HT
+
+===== OVERFLLOW; Value:26790200186833351596407496332828116666, was not inserted into HT
+
+===== OVERFLLOW; Value:33872851697331260328763584806529187354, was not inserted into HT
+
+===== OVERFLLOW; Value:18432355105806280456370502182705724734, was not inserted into HT
+
+===== OVERFLLOW; Value:25961582556213489454987239503024938418, was not inserted into HT
+
+===== OVERFLLOW; Value:26125062811951297849239672475745934764, was not inserted into HT
+
+===== OVERFLLOW; Value:15650755357367316048132673977996113260, was not inserted into HT
+
+===== OVERFLLOW; Value:275366156233154470950007681199536271, was not inserted into HT
+
+===== OVERFLLOW; Value:6948829565450203162517581755551112363, was not inserted into HT
+
+===== OVERFLLOW; Value:14048541204400912023510529816090525992, was not inserted into HT
+
+===== OVERFLLOW; Value:2720856198802411913406083619619799546, was not inserted into HT
+
+===== OVERFLLOW; Value:37514869940827789613779772545453536728, was not inserted into HT
+
+===== OVERFLLOW; Value:28499784484511001321703739611635999824, was not inserted into HT
+
+===== OVERFLLOW; Value:12537324744595003572922726359817414251, was not inserted into HT
+
+===== OVERFLLOW; Value:2027608477948567908850626772339751790, was not inserted into HT
+
+===== OVERFLLOW; Value:28648245873019657884194473539900936141, was not inserted into HT
+
+===== OVERFLLOW; Value:8166047568212095436101773551349919706, was not inserted into HT
+
+===== OVERFLLOW; Value:10213040751304258735119431110579406550, was not inserted into HT
+
+===== OVERFLLOW; Value:286337469506175476303565497984162897, was not inserted into HT
+
+===== OVERFLLOW; Value:28011159120027765054675538991073911765, was not inserted into HT
+
+===== OVERFLLOW; Value:27725637047395316968838588455008610643, was not inserted into HT
+
+===== OVERFLLOW; Value:34124006178932273250664760763287414939, was not inserted into HT
+
+Outsource Time :1287.08
+
+===== OVERFLLOW; Value:26922600116428674666063090483187011105, was not inserted into HT
+
+===== OVERFLLOW; Value:37886657549328751708271936868148864931, was not inserted into HT
+
+===== OVERFLLOW; Value:36272997257155261666797013351903928138, was not inserted into HT
+
+===== OVERFLLOW; Value:37493152061327941182665876199327119328, was not inserted into HT
+
+===== OVERFLLOW; Value:40443020461196956257522541458481677207, was not inserted into HT
+
+===== OVERFLLOW; Value:24628562975450380424089398882417045647, was not inserted into HT
+
+===== OVERFLLOW; Value:17764265766347588677214444051843357941, was not inserted into HT
+
+===== OVERFLLOW; Value:31854464156657004409204005051026606223, was not inserted into HT
+
+===== OVERFLLOW; Value:1891569896087833215893680888220751729, was not inserted into HT
+
+===== OVERFLLOW; Value:35760798585127482332009320018589205598, was not inserted into HT
+
+===== OVERFLLOW; Value:14364970138262459197402456903794696128, was not inserted into HT
+
+===== OVERFLLOW; Value:5253575999967308791856611580069130276, was not inserted into HT
+
+===== OVERFLLOW; Value:26496619372535171840642883892002905700, was not inserted into HT
+
+===== OVERFLLOW; Value:18087008621366292347242366558791493687, was not inserted into HT
+
+===== OVERFLLOW; Value:37731226907463703047974397115382742812, was not inserted into HT
+
+===== OVERFLLOW; Value:28851908803816131046843169251394360764, was not inserted into HT
+
+===== OVERFLLOW; Value:14753235630155672116388416505769671583, was not inserted into HT
+
+===== OVERFLLOW; Value:36942548092522282774172270093394686054, was not inserted into HT
+
+===== OVERFLLOW; Value:27376533520551971392578510427422848939, was not inserted into HT
+
+===== OVERFLLOW; Value:17387320055956499357785315846924642506, was not inserted into HT
+
+===== OVERFLLOW; Value:18276219455193821608956137309495005562, was not inserted into HT
+
+===== OVERFLLOW; Value:24240162021568065321931972753061563862, was not inserted into HT
+
+===== OVERFLLOW; Value:36940934126459220015675176898019738875, was not inserted into HT
+
+===== OVERFLLOW; Value:26925937614672722034057540499349157843, was not inserted into HT
+
+===== OVERFLLOW; Value:35984807495341633908673951505361604040, was not inserted into HT
+
+===== OVERFLLOW; Value:4749739169056094943083916061547661023, was not inserted into HT
+
+===== OVERFLLOW; Value:981796373815002254523643021096474165, was not inserted into HT
+
+===== OVERFLLOW; Value:41770373549333902782413076986734484174, was not inserted into HT
+
+===== OVERFLLOW; Value:27699130378922515420642158280350227742, was not inserted into HT
+
+===== OVERFLLOW; Value:33918018377064523834340843867724635777, was not inserted into HT
+
+===== OVERFLLOW; Value:15823062996555382951602965326097527314, was not inserted into HT
+
+===== OVERFLLOW; Value:38118302810811627751535019733325292294, was not inserted into HT
+
+===== OVERFLLOW; Value:29830955756001316911437229961285813068, was not inserted into HT
+
+===== OVERFLLOW; Value:21814766972602543915466448524200674168, was not inserted into HT
+
+===== OVERFLLOW; Value:27995548940596393030142629911003526616, was not inserted into HT
+
+===== OVERFLLOW; Value:38022353542531849782555549199738138959, was not inserted into HT
+
+===== OVERFLLOW; Value:17666321336381017743327181661309666606, was not inserted into HT
+
+===== OVERFLLOW; Value:7988452374686517364085598354528334444, was not inserted into HT
+
+===== OVERFLLOW; Value:15183531202979257303603727190532328828, was not inserted into HT
+
+===== OVERFLLOW; Value:25250161785480946154155193710443241709, was not inserted into HT
+
+----------------
+
+Time to compute comp_request:5.83997e-07
+
+----------------
+
+Time to  Grant computation:1878.4
+
+----------------
+
+Time to run Serv.comput():631.961
+
+----------------
+
+Time to find intersection:4106.59
+
+----------------
+
+Total Computation Time Excluding outsource Time:6617.04
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Set_a_size:       1000000
+	 Set_b_size:       1000000
+	 Pub_mod_bitsize:  210
+	 Bucket_max_load:  120
+	 Table_length:     13000
+
+----------------------------------------------------------------
+
+Outsource Time :118.884
+
+----------------
+
+Time to compute comp_request:4.97996e-07
+
+----------------
+
+Time to  Grant computation:190.688
+
+----------------
+
+Time to run Serv.comput():149.429
+
+----------------
+
+Time to find intersection:5297.69
+
+----------------
+
+Total Computation Time Excluding outsource Time:5637.81
+
+

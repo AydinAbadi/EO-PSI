@@ -1,0 +1,40 @@
+/*
+#include<iostream>
+using namespace std;
+#include<string>
+#include<gmp.h>
+#include <gmpxx.h>
+#include<cstring>
+#include<iostream>
+#include<fstream>
+#include <stdlib.h>
+*/
+#include "Hashtable.h"
+typedef mpz_t bigint;
+
+
+
+
+
+class Polynomial{
+
+public: 
+	Polynomial(){};
+	Polynomial(bigint* elem, string poly_ID, bigint * xpoints,int elem_size, int xpoints_size, bigint pubmoduli); 
+	//~Polynomial(){delete[]values;};
+	bigint *  evaluate (bigint *,bigint * ,int,int,bigint);
+	bigint * get_values(); 
+bigint*  get_value(int i){return values[i];}; 
+	void   blind_poly (bigint , bigint); 
+string get_poly_ID(){return poly_ID;}
+private:
+	string  poly_ID; 
+	bigint * values;  
+	int val_size;
+};
+
+
+
+
+
+

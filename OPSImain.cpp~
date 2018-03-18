@@ -1,0 +1,537 @@
+/*
+#include<iostream>
+#include<gmp.h>
+#include <gmpxx.h>
+#include<sstream>
+using namespace std;
+#include<iomanip>
+#include <string>
+#include<cstring>
+#include<fstream>
+#include<math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <cstdlib>
+#include <assert.h>
+
+*/
+
+//#include "cryptopp/pwdbased.h"
+//#include <cryptopp/pwdbased.h>
+//#include "cryptopp/hmac.h"
+ 
+//#include <cryptopp/hmac.h>
+//#include <cryptopp/cryptlib.h>
+#include "OPSImain.h"
+//#include "flint.h"
+//#include"mpfr.h"
+//#include "fmpz_mod_poly.h"
+typedef mpz_t bigint;
+//#include <omp.h>
+//#include <time.h>
+//typedef mp_limb_t * fmpz_t;
+
+
+//#include <cryptopp/sha.h>
+//#include <cryptopp/filters.>
+//#include <cryptopp/hex.h>
+
+int get_size(char* a_sou){
+
+
+	int count=0;
+	ifstream rd(a_sou);
+	//bigint temp;
+	char c[1024];
+	//count number of elem
+	while(rd>>c){
+		count++;
+	}
+	rd.close();
+	return count;
+
+}
+
+
+
+bigint* get_vals(char* a_sou,int & size){
+
+	int count=0;
+	ifstream rd1(a_sou);
+	//bigint temp;
+	char c1[1024];
+	//count number of elem
+	while(rd1>>c1){
+		count++;
+	}
+	rd1.close();
+	size=count;
+
+	char c2[1024];
+	bigint *vals;
+	int h=0;
+	vals=(mpz_t*)malloc(count*sizeof(mpz_t));
+	ifstream rd2(a_sou);
+	//copy to bigint array
+	while(rd2>>c2){
+		mpz_init_set_str(vals[h],c2,10);
+		h++;
+	}
+	rd2.close();
+	return vals;
+
+}
+
+
+
+bool exits(string a,bigint *b,int size){
+	bigint d;
+	char*c_con=new char[a.length()];
+		strcpy(c_con,a.c_str());
+		mpz_init_set_str(d,c_con,10);
+	for(int i=0;i<size;i++){
+
+		if(mpz_cmp(d,b[i])==0){return true;break;}
+	}
+	return  false;
+}
+
+
+bool exits2(bigint a,bigint *b,int size){
+	
+	for(int i=0;i<size;i++){
+
+		if(mpz_cmp(a,b[i])==0){return true;break;}
+	}
+	return  false;
+}
+
+
+
+int main(){
+
+
+int xsize=102;//242	//***** Note that the number of x is determined by bucket_max_load
+int pub_mod_bitsize=112;
+int max_setsize=50;//
+int bucket_max_load=4;//185
+int table_length=100;//13000
+int hash_len=40;
+ 
+
+/*
+int xsize=15;	//***** Note that the number of x is determined by bucket_max_load
+int pub_mod_bitsize=210;
+int max_setsize=1000000;//
+int bucket_max_load=5;
+int table_length=20;
+int hash_len=15;
+
+*/
+
+//int elem_bit_size=100;
+if(xsize< (2*bucket_max_load)+1) {cout<<"\nxsize must be greater than 2*bucket_max_load)+1, reset it\n";return 0;}
+//int interSec_size=10;
+//int set_size=10;
+
+
+
+//if (elem_bit_size>=pub_mod_bitsize) { cout<<"\n\nError:elem_bit_size>=pub_mod_bitsize ! reset elem_bit_size\n\n"; return 0;}
+
+
+
+double exp=1;//Number of experiments
+
+double outsource=0;
+double auth=0;
+double cloudcomp=0;
+double clientresultret=0;
+
+
+int count=1;
+for(int l=0;l<exp;l++){
+Server serv(xsize,2,pub_mod_bitsize,max_setsize, bucket_max_load,table_length);// generates random xpoints// For now max_setsize make no sense but I left it there as I may find an accurate formula with which the server can set HT parameters
+Server * serv_ptr (& serv);
+
+
+// Assigning random values to two sets a and b.
+
+
+mpz_t *aa,*bb;
+int elem_bit_size=32;
+int size_a=50;
+int size_b=50;
+aa=(mpz_t*)malloc(size_a*sizeof(mpz_t));
+bb=(mpz_t*)malloc(size_b*sizeof(mpz_t));
+aa=serv.gen_randSet (size_a, elem_bit_size); 
+bb=serv.gen_randSet (size_b, elem_bit_size); 
+int interSec_size=10;
+
+cout<<"\n("<<count<<")"<<endl;
+cout<<"\nElem in common:"<<endl;
+
+
+
+
+
+
+
+for(int i=0;i< interSec_size;i++){
+
+mpz_set(bb[i],aa[i]);
+cout<<"\t\t"<<bb[i]<<endl;
+
+
+}
+
+
+
+/*
+
+bigint *aa,*bb;
+
+int a_size,b_size;
+string a_source="a.txt";
+string b_source="b.txt";
+
+char *a_sou=new char[a_source.length()];
+char *b_sou=new char[b_source.length()];
+
+strcpy( a_sou,a_source.c_str());
+strcpy(b_sou,b_source.c_str());
+
+int size_a,size_b;
+
+aa=get_vals(a_sou,size_a);
+bb=get_vals(b_sou,size_b);
+
+*/
+
+cout<<"\n----------------------------------------------------------------\n";
+cout<<"\t Set_a_size:       "<<size_a<<endl;
+cout<<"\t Set_b_size:       "<<size_b<<endl;
+cout<<"\t Pub_mod_bitsize:  "<<pub_mod_bitsize<<endl;
+cout<<"\t Bucket_max_load:  "<<bucket_max_load<<endl;
+cout<<"\t Table_length:     "<<table_length<<endl;
+//cout<<"\t Elem_bit_size:    "<<elem_bit_size<<endl;
+cout<<"\n----------------------------------------------------------------\n";
+
+
+
+double start000=omp_get_wtime();
+Client A(serv_ptr,aa,size_a,hash_len);
+string as="A_ID";
+
+
+
+A.outsource_poly(as);
+
+double end000=omp_get_wtime();
+cout<<"\nOutsource Time :"<<end000-start000<<endl;
+outsource+=end000-start000;
+
+//Client B(serv_ptr,bb,set_size,hash_len);
+Client B(serv_ptr,bb,size_b,hash_len);
+string bs="B_ID";
+
+B.outsource_poly(bs);
+cout<<"\n----------------"<<endl;
+
+
+double start5=omp_get_wtime();
+
+double start1=omp_get_wtime();
+CompPerm_Request*req=B.gen_compPerm_req(); 
+double end1=omp_get_wtime();
+cout<<"\nTime to compute comp_request:"<<end1-start1<<endl;
+
+cout<<"\n----------------"<<endl;
+
+bigint **q;
+
+double start2=omp_get_wtime();
+GrantComp_Info*ptr1=A.grant_comp(req,q,true);
+double end2=omp_get_wtime();
+cout<<"\nTime to  Grant computation:"<<end2-start2<<endl;
+auth+=end2-start2;
+cout<<"\n----------------"<<endl;
+
+double start3=omp_get_wtime();
+Server_Result*res=serv.compute_result(ptr1);
+double end3=omp_get_wtime();
+cout<<"\nTime to run Serv.comput():"<<end3-start3<<endl;
+cloudcomp+=end3-start3;
+cout<<"\n----------------"<<endl;
+string **values;
+int* sz;
+
+double start4=omp_get_wtime();
+B.find_intersection(res,sz,q);
+
+
+cout<<"\n----------------"<<endl;
+
+
+double end5=omp_get_wtime();
+cout<<"\nTotal Computation Time Excluding outsource Time:"<<end5-start5<<endl;
+cout<<endl;
+cout<<endl;
+
+cout<<"\nExtracting VALID roots\n";
+string sou="temproots.txt";
+string des="roots.txt";
+
+
+char *c_sou=new char[sou.length()];
+char *c_des=new char[des.length()];
+
+strcpy( c_sou, sou.c_str());
+strcpy(c_des,des.c_str());
+//double start9=omp_get_wtime();
+B.extract(c_sou,c_des);
+//double end9=omp_get_wtime();
+//cout<<"\nExtraction time:"<<end9-start9<<endl;
+
+double end4=omp_get_wtime();
+cout<<"\nTime to find intersection:"<<end4-start4<<endl;
+clientresultret+=end4-start4;
+
+
+count++;
+}
+
+cout<<endl;
+cout<<"\n====================================\n"<<endl;
+cout<<"\n\n\nAverage Outsource Time:"<<outsource/exp<<endl;
+cout<<"\n\n\nAverage authorization Time:"<<auth/exp<<endl;
+cout<<"\n\n\nAverage Cloud-side Computation Time:"<<cloudcomp/exp<<endl;
+cout<<"\n\n\nClient side result retieval Time:"<<clientresultret/exp<<endl;
+
+
+
+
+
+//double end5=omp_get_wtime();
+//cout<<"\nTime to run find_intersection():"<<end5-start5<<endl;
+//cout<<"\n====Roots=========="<<endl;
+//cout<<endl;
+//for(int i=0;i<sz;i++){
+//	if(B.is_occupied(int i)){
+//
+//	cout<<i<<"\t :"<<values[i]<<endl;
+//	}
+//}
+//int tb_size=serv_ptr->get_table_size();
+//
+//int count=0;
+//bool is=false;
+//for(int i=0;i<tb_size;i++){
+//	
+//	int tm= sz[i];
+////	cout<<"\ntm:"<<tm<<endl;
+//		for(int j=0;j<tm;j++){
+//			is=exits(values[i][j],bb,interSec_size);
+//			 if (is){ 
+//				 count++;
+//			//	 cout<<"\t Intersection Elements :"<<values[i][j]<<endl;
+//				  is=false;
+//			 }
+//			
+//		}
+//}
+//if(count==interSec_size) cout<<"\n\t ************************* Correct! *************************"<<endl;
+
+
+
+
+
+
+
+// It is used when two sets as the two text files are provided
+/*
+cout<<"\n....Correctness Checking..."<<endl;
+string line;
+int count=0;
+
+ifstream rd("temproots.txt");
+bigint temp;
+char c[1024];
+while(rd>>c){
+	count++;
+}
+
+rd.close();
+//cout<<"count:"<<count<<endl;
+char c1[1024];
+bigint *tm;
+tm=(mpz_t*)malloc(count*sizeof(mpz_t));
+ifstream rd4("temproots.txt");
+int h=0;
+while(rd4>>c1){
+	mpz_init_set_str(tm[h],c1,10);
+	h++;
+}
+
+rd4.close();
+int cj=0;
+bool iis=false;
+
+for(int i=0;i<count;i++){
+		iis=exits2(tm[i],bb,interSec_size);
+		if(iis) {
+			cj++;
+			iis=false;
+		}
+}
+
+ if(cj==interSec_size) cout<<"\n\t ************************* Correct!  *************************"<<endl;
+else cout<<"\n********* No intersection ********\n";
+
+*/
+
+
+
+/*
+
+cout<<"\n\nTesting KDF"<<endl;
+
+byte  der_key[8];
+
+string pass="22220";
+
+//DeriveKey(der_key, sizeof(der_key),( byte*)pass.c_str(),pass.length());
+
+
+//PKCS5_PBKDF2_HMAC<CryptoPP::SHA1> pbkdf2;
+CryptoPP::PKCS5_PBKDF2_HMAC < CryptoPP::SHA1 > kdf;
+kdf.DeriveKey(der_key, si-I/scratch/kwb13109/software/includezeof(der_key),0x00,( byte*)pass.c_str(),pass.length(),NULL,0,2,0);
+
+bigint b;
+mpz_init(b);
+mpz_import(b,sizeof(der_key),1,sizeof(der_key[0]),0,0,der_key);
+
+cout<<"\nDerived key:"<<b<<endl;
+
+byte  der_keyo[8];
+string passo="2";
+kdf.DeriveKey(der_keyo, sizeof(der_keyo),0x00,( byte*)passo.c_str(),passo.length(),NULL,0,2,0);
+
+
+
+bigint lo;
+mpz_init(lo);
+mpz_import(lo,sizeof(der_keyo),1,sizeof(der_keyo[0]),0,0,der_keyo);
+cout<<"\nDerived key:"<<lo<<endl;
+
+*/
+
+
+
+
+
+
+
+
+/*
+
+mpz_t *tb;
+int elem_bit_size=64;
+int tb_size=10;
+tb=(mpz_t*)malloc(tb_size*sizeof(mpz_t));
+tb=serv.gen_randSet (tb_size, elem_bit_size); 
+bigint pubmoduli;
+mpz_init_set_str(pubmoduli,"23",10);
+
+
+
+
+fmpz_t n;
+fmpz_init_set_readonly(n, pubmoduli);
+
+
+fmpz_mod_poly_t x, y;
+//fmpz_init_set_ui(n, 532);// assigns moduli n
+fmpz_mod_poly_init(x, n);// initiate polyx over n
+//fmpz_mod_poly_init(y, n);
+//fmpz_mod_poly_set_coeff_ui(x, 3, 5);// set coef.
+//fmpz_mod_poly_set_coeff_ui(x, 0, 6);
+
+
+bigint *ar;
+ar=(mpz_t*)malloc(3*sizeof(mpz_t));
+
+
+
+mpz_init_set_str(ar[0],"2",10);
+mpz_init_set_str(ar[1],"20",10);
+mpz_init_set_str(ar[2],"1",10);
+
+char * tmp_mod = mpz_get_str(NULL,10,pubmoduli);
+ZZ p=to_ZZ(tmp_mod);
+ZZ_p::init(p);
+ZZ_pX P;
+
+
+for(int i=0;i<3;i++){
+
+fmpz_mod_poly_set_coeff_mpz(x ,i,  ar[i]);
+char * tmp = mpz_get_str(NULL,10,ar[i]);
+
+ZZ_p dd=to_ZZ_p(conv<ZZ> (tmp));
+SetCoeff(P, i,dd);
+
+}
+Vec< Pair< ZZ_pX, long > > factors;
+
+CanZass(factors, P); 
+
+cout<<"\n-------NTL---------"<<endl;
+cout<<"\np:"<<P<<endl;
+cout<<"NTL factors:"<<factors<<endl;
+cout<<"\n-------NTL---------"<<endl;
+
+bigint kk;
+mpz_init(kk);
+cout<<endl;
+
+for(int i=0;i<3;i++){
+ fmpz_mod_poly_get_coeff_mpz( kk,x ,  i);
+cout<<"coeff"<<i<<":"<<kk<<endl;
+}
+
+
+
+fmpz_mod_poly_factor_t fac;
+fmpz_mod_poly_factor_init(fac);
+
+fmpz_mod_poly_factor_kaltofen_shoup(fac,x);
+fmpz_mod_poly_factor_print(fac);
+
+
+*/
+/*
+cout<<"\nEEE\n";
+ flint_printf(" ^ %wd\n", fac->exp[0]);
+
+
+
+cout<<"\nlen:"<<fac->poly->length<<endl;
+
+
+	for(int i=0;i<fac->num;i++){
+		if(fac->poly->length==2){
+			for(int j=0;j<2;j++){
+ 				fmpz_mod_poly_get_coeff_mpz( kk,fac->poly+i ,  j);
+				cout<<"\n\nFac-coeff"<<j<<":"<<kk<<endl;
+			}
+		}
+
+	}
+cout<<"\nfac->num:"<<fac->num<<endl;
+
+*/
+return 0;
+
+}
+
+//$ g++ -I$home/win7/include  polynomial.o server.o client.o OPSImain.cpp -lgomp  -L/cygdrive/c/cygwin/home/Win7/libpaillier -l:libpaillier.a  -L$home/win7/lib -lntl -lgmpxx -lgmp -lm

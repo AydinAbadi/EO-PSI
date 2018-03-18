@@ -1,0 +1,123 @@
+/*
+#include<iostream>
+#include<gmp.h>
+#include <gmpxx.h>
+#include<sstream>
+using namespace std;
+#include<iomanip>
+#include <string>
+#include<cstring>
+#include<iostream>
+#include<fstream>
+//#include <openssl/rand.h>
+#include<math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <cstdlib>
+#include <assert.h>
+
+typedef mpz_t bigint;
+*/
+#include"Polynomial.h"
+
+Polynomial::Polynomial(bigint* elem,string ID, bigint * xpoints,int elem_size,int xpoints_size,bigint pubmoduli){
+
+	bigint minus_one;
+	bigint *temp;
+	poly_ID=ID;
+	mpz_init_set_str(minus_one,"-1",10);
+	temp=(mpz_t*)malloc(xpoints_size*sizeof(mpz_t));
+	Random rd;
+	val_size=xpoints_size;
+	bigint *elem_temp;
+			//Random rdx;
+	elem_temp=(mpz_t*)malloc(xpoints_size*sizeof(mpz_t));
+	// if eleme[0]==-1, then fill all elem in values with some random values.
+	if(mpz_cmp(elem[0],minus_one)==0){
+		gmp_randstate_t rand;
+		bigint ran;
+		rd.init_rand3(rand,ran,8);
+		gmp_randstate_t rand1;
+		gmp_randinit_default(rand1);
+		gmp_randseed(rand1,ran);
+		for(int i=0;i<xpoints_size;i++){
+			mpz_init(temp[i]);
+			mpz_urandomb(temp[i],rand1,115);
+		}
+		values=temp;
+	}
+
+	//else{values= evaluate (elem, xpoints,elem_size, xpoints_size, pubmoduli);}// else
+
+
+
+else{
+			Random rdx;
+			for(int j=0;j<elem_size;j++){
+				mpz_init_set(elem_temp[j],elem[j]);
+				if(mpz_cmp(elem_temp[j],minus_one)==0){
+					gmp_randstate_t randx;
+					bigint ranx;
+					rdx.init_rand3(randx,ranx,8);
+					gmp_randstate_t rand1x;
+					gmp_randinit_default(rand1x);
+					gmp_randseed(rand1x,ranx);
+					mpz_urandomb(elem_temp[j],rand1x,115);
+				}
+			}
+			values= evaluate (elem_temp, xpoints,elem_size, xpoints_size, pubmoduli);
+		}
+	}
+
+
+
+bigint* Polynomial:: evaluate(bigint* elem, bigint* xp,int ele_size, int xp_size,bigint pubmod){
+
+	bigint mult2;
+	bigint*val;
+	bigint temp;
+	mpz_init(temp);
+	val= (mpz_t*)malloc(xp_size*sizeof(mpz_t));
+	for (int i=0;i<xp_size;i++)
+		mpz_init_set_str(val[i],"0",10);
+
+		for (int i=0;i<xp_size;i++){
+			mpz_init_set_str(mult2,"1",10);
+			for (int j=0;j<ele_size;j++){//ele_size: no. of elements in a bucket
+
+				mpz_sub(temp,xp[i],elem[j]);
+				mpz_mul(mult2,mult2,temp);
+				mpz_mod(mult2,mult2,pubmod);
+				mpz_set(val[i],mult2);
+			}
+		}
+
+
+	return val;
+}
+
+
+void Polynomial::blind_poly(bigint seed, bigint pubmod){
+
+	bigint *pr_val,*ptr;
+	ptr=get_values();
+	pr_val=(mpz_t*)malloc(val_size*sizeof(mpz_t));
+	gmp_randstate_t rand;
+	gmp_randinit_default(rand);
+	gmp_randseed(rand,seed);
+	for(int i=0;i<val_size;i++){
+		mpz_init(pr_val[i]);
+		mpz_urandomb(pr_val[i],rand,115);
+
+		mpz_add(pr_val[i],ptr[i],pr_val[i]);
+		mpz_mod(pr_val[i],pr_val[i],pubmod);
+
+	}
+	values=pr_val;
+}
+
+
+
+bigint* Polynomial::get_values(){
+	return values;
+}
